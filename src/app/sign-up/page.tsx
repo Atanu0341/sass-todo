@@ -1,11 +1,11 @@
 'use client'
 
+import LoadingSkeleton from '@/components/skeleton-loader';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useSignUp } from '@clerk/nextjs';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
@@ -27,23 +27,7 @@ function Signup() {
   const router = useRouter()
 
   if (!isLoaded) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-background">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <Skeleton className="h-8 w-3/4 mx-auto" />
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Skeleton className="h-10 w-full" />
-            <Skeleton className="h-10 w-full" />
-            <Skeleton className="h-10 w-full" />
-          </CardContent>
-          <CardFooter>
-            <Skeleton className="h-4 w-3/4 mx-auto" />
-          </CardFooter>
-        </Card>
-      </div>
-    )
+    return <LoadingSkeleton />
   }
 
   async function submit(e: React.FormEvent) {
